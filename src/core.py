@@ -380,9 +380,9 @@ def launcher(filename, install_location):
                 # if we found filetype
                 if point != "":
                     filewrite = open("/usr/local/bin/" + launchers, "w")
-                    filewrite.write('#!/bin/sh\n[ -x %s%s ] || chmod +x %s%s\n%s%s $*\n' %
+                    filewrite.write('#!/bin/sh\n[ -x %s%s ] || chmod +x %s%s\ncd %s\n./%s $*\n' %
                                     (install_location, file_point, install_location, file_point, install_location, file_point))
-                    filewrite.close()
+                     filewrite.close()
                     subprocess.Popen("chmod +x /usr/local/bin/%s" %
                                      (launchers), shell=True).wait()
                     print_status(
